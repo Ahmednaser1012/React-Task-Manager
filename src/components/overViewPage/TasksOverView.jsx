@@ -1,6 +1,3 @@
-import React from "react";
-// eslint-disable-next-line no-unused-vars
-import { motion } from "framer-motion";
 import {
   XAxis,
   YAxis,
@@ -11,32 +8,32 @@ import {
   Line,
 } from "recharts";
 
-const salesData = [
-  { name: "Jul", sales: 4200 },
-  { name: "Aug", sales: 3800 },
-  { name: "Sep", sales: 5100 },
-  { name: "Oct", sales: 4600 },
-  { name: "Nov", sales: 5400 },
-  { name: "Dec", sales: 7200 },
-  { name: "Jan", sales: 6100 },
-  { name: "Feb", sales: 5900 },
-  { name: "Mar", sales: 6800 },
-  { name: "Apr", sales: 6300 },
-  { name: "May", sales: 7100 },
-  { name: "Jun", sales: 7500 },
+const tasksData = [
+  { name: "Jul", tasks: 42 },
+  { name: "Aug", tasks: 38 },
+  { name: "Sep", tasks: 51 },
+  { name: "Oct", tasks: 46 },
+  { name: "Nov", tasks: 54 },
+  { name: "Dec", tasks: 72 },
+  { name: "Jan", tasks: 61 },
+  { name: "Feb", tasks: 59 },
+  { name: "Mar", tasks: 68 },
+  { name: "Apr", tasks: 63 },
+  { name: "May", tasks: 71 },
+  { name: "Jun", tasks: 75 },
 ];
 
-export const SalesOverView = () => {
+export const TasksOverView = () => {
   return (
     <>
-      <motion.div className="bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 border border-gray-700">
+      <div className="bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-lg rounded-xl p-6 border border-gray-700">
         <h2 className="text-lg font-medium mb-4 text-gray-100">
-          Sales Overview
+          Tasks Overview
         </h2>
 
         <div className="h-80">
           <ResponsiveContainer width={"100%"} height={"100%"}>
-            <LineChart data={salesData}>
+            <LineChart data={tasksData}>
               <CartesianGrid strokeDasharray="3 3" stroke="#4B5563" />
               <XAxis dataKey={"name"} stroke="#9ca3af" />
               <YAxis stroke="#9ca3af" />
@@ -49,7 +46,7 @@ export const SalesOverView = () => {
               />
               <Line
                 type="monotone"
-                dataKey="sales"
+                dataKey="tasks"
                 stroke="#6366F1"
                 strokeWidth={3}
                 dot={{ fill: "#6366F1", strokeWidth: 2, r: 6 }}
@@ -58,7 +55,7 @@ export const SalesOverView = () => {
             </LineChart>
           </ResponsiveContainer>
         </div>
-      </motion.div>
+      </div>
     </>
   );
 };

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { login } from "../redux/autth/authSlice";
+import { login } from "../redux/autth/authSlice"; 
 
 export const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -10,6 +10,13 @@ export const LoginPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
+   useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/dashboard");
+    }
+  }, [isAuthenticated]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,16 +24,15 @@ export const LoginPage = () => {
     setError(null);
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 800));
+       await new Promise((resolve) => setTimeout(resolve, 800));
       if (email === "admin@example.com" && password === "password") {
-        dispatch(
-          login({
-            id: "1",
-            name: "Admin User",
-            email: "admin@example.com",
-            role: "admin",
-          })
-        );
+        const userData = {
+          id: "1",
+          name: "Admin User",
+          email: "admin@example.com",
+          role: "admin",
+        };
+        dispatch(login(userData));
         navigate("/dashboard");
       } else {
         setError("Invalid credentials. Try admin@example.com / password");

@@ -1,9 +1,9 @@
-import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { logout } from "../../redux/autth/authSlice";
+import { logout } from "../../redux/autth/authSlice"; // TODO: fix folder name typo
 import { Search } from "lucide-react";
+
 export const NavBar = ({ title }) => {
   const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
@@ -11,11 +11,10 @@ export const NavBar = ({ title }) => {
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const handleLogout = () => {
+   const handleLogout = () => {
     setTimeout(() => {
       try {
         dispatch(logout());
-        console.log("signout success");
         navigate("/login");
       } catch (error) {
         alert(error.message);

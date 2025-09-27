@@ -1,13 +1,10 @@
-/* eslint-disable no-unused-vars */
-import React from "react";
-import { motion } from "framer-motion";
 import { User } from "lucide-react";
 import { useSelector } from "react-redux";
 export const Profile = () => {
   const user = useSelector((state) => state.auth.user);
   return (
     <div>
-      <motion.div className="w-full  text-center sm:text-left bg-gray-800 bg-opacity-50 shadow-lg rounded-xl p-4 sm:p-6 border border-gray-700 mb-8 mx-auto">
+      <div className="w-full text-center sm:text-left bg-gray-800 bg-opacity-50 shadow-lg rounded-xl p-4 sm:p-6 border border-gray-700 mb-8 mx-auto">
         <div className="flex flex-col sm:flex-row items-center sm:items-start gap-1 mb-3">
           <User className="text-indigo-400 mt-.5" size="24" />
           <h2 className="text-xl font-semibold text-gray-300">Profile</h2>
@@ -33,7 +30,7 @@ export const Profile = () => {
             Edit Profile
           </button>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 };

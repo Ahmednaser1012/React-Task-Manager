@@ -1,4 +1,3 @@
-import React from "react";
 import { NavBar } from "../components/common/NavBar";
 import { Profile } from "../components/setting/Profile";
 import { Notifications } from "../components/setting/Notifications";

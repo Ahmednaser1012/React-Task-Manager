@@ -12,9 +12,6 @@
 
 ::-webkit-scrollbar-thumb {
   background: #03044d;
-  border-radius: 60px;
+  border-radius: 8px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #03044d;
-}

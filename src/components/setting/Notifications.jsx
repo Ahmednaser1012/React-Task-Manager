@@ -1,8 +1,5 @@
-/* eslint-disable no-unused-vars */
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
 import { Bell } from "lucide-react";
-import { useState } from "react";
 import ToggleSwitch from "./ToggleSwitch";
 
 export const Notifications = () => {
@@ -14,7 +11,7 @@ export const Notifications = () => {
 
   return (
     <>
-      <motion.div className=" bg-gray-800 bg-opacity-50  shadow-lg rounded-xl p-6 border border-gray-700  mb-8">
+      <div className="bg-gray-800 bg-opacity-50 shadow-lg rounded-xl p-6 border border-gray-700 mb-8">
         <div className="flex flex-col sm:flex-row items-center sm:items-start gap-2 mb-3">
           <Bell className="text-indigo-400 mt-1" size="24" />
           <h2 className="text-xl font-semibold text-gray-300">Notifications</h2>
@@ -40,7 +37,7 @@ export const Notifications = () => {
             setNotifications({ ...notifications, sms: !notifications.sms })
           }
         />
-      </motion.div>
+      </div>
     </>
   );
 };
