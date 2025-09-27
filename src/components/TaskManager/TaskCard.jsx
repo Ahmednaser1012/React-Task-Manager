@@ -12,7 +12,7 @@ export const TaskCard = ({
   const [imageLoading, setImageLoading] = useState(true);
   const [imageError, setImageError] = useState(false);
 
-  // find category 
+  // find category
   const category = categories.find((cat) => cat.id === task.category_id) || {
     name: `Category ${task.category_id}`,
     color: "#666666",
@@ -127,7 +127,9 @@ export const TaskCard = ({
             task.priority
           )}`}
         >
-          {task.priority.charAt(0).toUpperCase() + task.priority.slice(1)}
+          {task.priority
+            ? task.priority.charAt(0).toUpperCase() + task.priority.slice(1)
+            : "No Priority"}
         </span>
       </div>
 
