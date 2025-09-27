@@ -1,5 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchTasks, addTask, updateTask, deleteTask } from "../api/apiSlice.jsx";
+import {
+  fetchTasks,
+  addTask,
+  updateTask,
+  deleteTask,
+} from "../api/apiSlice.jsx";
 
 const tasksSlice = createSlice({
   name: "tasks",
@@ -10,28 +15,29 @@ const tasksSlice = createSlice({
     lastUpdated: null,
   },
   reducers: {
-     clearError: (state) => {
+    clearError: (state) => {
       state.error = null;
     },
-    
-     clearTasks: (state) => {
+
+    clearTasks: (state) => {
       state.items = [];
       state.status = "idle";
       state.error = null;
       state.lastUpdated = null;
     },
-    
-     toggleTaskStatus: (state, action) => {
+
+    toggleTaskStatus: (state, action) => {
       const taskId = action.payload;
-      const task = state.items.find(t => t.id === taskId);
+      const task = state.items.find((t) => t.id === taskId);
       if (task) {
         task.completed = !task.completed;
       }
-    }
+    },
   },
   extraReducers: (builder) => {
     builder
-       .addCase(fetchTasks.pending, (state) => {
+      // ----------------- fetch -----------------
+      .addCase(fetchTasks.pending, (state) => {
         state.status = "loading";
         state.error = null;
       })
@@ -45,14 +51,15 @@ const tasksSlice = createSlice({
         state.status = "failed";
         state.error = action.error.message;
       })
-      
-       .addCase(addTask.pending, (state) => {
+
+      // ----------------- add -----------------
+      .addCase(addTask.pending, (state) => {
         state.status = "loading";
         state.error = null;
       })
       .addCase(addTask.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.items.unshift(action.payload); 
+        state.items.unshift(action.payload);
         state.error = null;
         state.lastUpdated = new Date().toISOString();
       })
@@ -60,8 +67,8 @@ const tasksSlice = createSlice({
         state.status = "failed";
         state.error = action.error.message;
       })
-      
-      // update task
+
+      // ----------------- update -----------------
       .addCase(updateTask.pending, (state) => {
         state.status = "loading";
         state.error = null;
@@ -79,8 +86,8 @@ const tasksSlice = createSlice({
         state.status = "failed";
         state.error = action.error.message;
       })
-      
-      // delete task
+
+      // ----------------- delete -----------------
       .addCase(deleteTask.pending, (state) => {
         state.status = "loading";
         state.error = null;
